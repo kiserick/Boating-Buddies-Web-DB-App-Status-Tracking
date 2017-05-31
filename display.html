@@ -1,0 +1,34 @@
+<html>
+<head>
+<script src="jquery-3.1.0.min.js"></script>
+
+</head>
+<body>
+	<ul id="result" style="list-style: none">
+	</ul>
+	<script>
+
+	function get_res(){
+		
+		 $.ajax({
+        url: "index.php",
+        method: "GET",
+        
+      }).done(function(data) {
+      	var spt=data.split(',');
+      	var ul_res= document.getElementById('result');
+      	 ul_res.innerHTML="";
+      	spt.forEach(function(entry) {
+      		
+		    var single_li="<li>"+entry+"</li>";
+		    
+		   ul_res.innerHTML+=single_li;
+		});
+      	
+      });
+	}
+	setInterval(function(){ get_res(); }, 2000);
+
+</script>
+</body>
+</html>
